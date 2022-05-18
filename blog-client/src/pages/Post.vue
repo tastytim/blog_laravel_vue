@@ -16,10 +16,10 @@ export default {
     },
   },
   setup(props) {
-    const  { post, fetchPost } = usePosts;
-    console.log(props.slug)
+    const  { post, fetchPost } = usePosts();
+    
     onMounted(fetchPost(props.slug));
-    return post;
+    return {post , fetchPost};
   },
 };
 </script>

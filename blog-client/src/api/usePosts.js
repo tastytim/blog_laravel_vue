@@ -9,7 +9,7 @@ export default function usePosts (){
        posts.value = response.data.data; 
    }
    const fetchPost = async (slug)=>{
-       let response = await axios.get(`/api/post/${slug}`);
+       let response = await axios.get(`/api/posts/${slug}`);
        post.value = response.data.data; 
    }
 

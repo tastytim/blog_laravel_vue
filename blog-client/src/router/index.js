@@ -16,7 +16,8 @@ const routes = [
     {
         path:'/posts/:slug',
         name : 'post',
-        component:Post
+        component:Post,
+        props:true,
     },
     {
         path:'/admin/login',
@@ -35,7 +36,7 @@ const routes = [
         }
     },
     {
-        path: '/admin/posts/:slug/edit',
+        path: '/admin/posts/:uuid/edit',
         name:'admin.posts.edit',
         component : Edit,
         props: true,

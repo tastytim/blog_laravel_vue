@@ -23,7 +23,7 @@
                     
                 </p>
                 <div>
-                    <router-link to="/" class="text-sm font-medium">Edit</router-link>
+                    <router-link :to="{name:'admin.posts.edit', params:{uuid:post.uuid}}" class="text-sm font-medium">Edit</router-link>
                 </div>
                 <div>
                     <button class="text-sm font-medium">Delete</button>
@@ -42,15 +42,18 @@ import useAdminPosts from '../../api/useAdminPosts'
 import {useRouter}from 'vue-router'
 export default {
     setup(){
-        const {posts, fetchPosts ,createPost} = useAdminPosts();
+        const {posts, fetchPosts ,createPost} = useAdminPosts(); 
+
+
         const router = useRouter();
+
+
         onMounted(fetchPosts())
-        const newPost =async ()=>{
+
+
+        const newPost = async ()=>{
            let post =  await createPost()
-           console.log(post) 
-
-
-           router.replace({name:'admin.posts.edit' , params:{ slug: post.slug}})
+           router.push({name:'admin.posts.edit' , params:{ uuid: post.uuid}})
         }
         
         return {posts , newPost}

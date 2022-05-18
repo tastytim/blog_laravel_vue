@@ -8,8 +8,8 @@ export default function useAdminPosts (){
        let response = await axios.get('/api/admin/posts');
        posts.value = response.data.data; 
    }
-   const fetchPost = async (slug)=>{
-       let response = await axios.get(`/api/admin/post/${slug}/edit`);
+   const fetchPost = async (uuid)=>{
+       let response = await axios.get(`/api/admin/posts/${uuid}/edit`);
        post.value = response.data.data; 
    }
 
@@ -18,7 +18,9 @@ export default function useAdminPosts (){
      return response.data.data
    }
 
+   const patchPost = async (uuid)=>{
+      await axios.patch(`/api/admin/posts/${uuid}`,  post.value)
+   }
 
-
-   return {posts, fetchPosts , createPost , post, fetchPost}
+   return {posts, fetchPosts , createPost , post, fetchPost , patchPost }
 }
