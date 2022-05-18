@@ -31,8 +31,10 @@ export default {
           const teaser = context.editor.state.doc.content.content.find(
               c=> c.type.name == 'paragraph' 
           )
-
-         emit('update:teaserValue', teaser.textContent)
+        if(teaser){
+            emit('update:teaserValue', teaser.textContent)
+        }
+         
         emit('update:modelValue', context.editor.getHTML())
     }
     });

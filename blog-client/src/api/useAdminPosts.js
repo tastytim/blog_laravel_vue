@@ -21,6 +21,9 @@ export default function useAdminPosts (){
    const patchPost = async (uuid)=>{
       await axios.patch(`/api/admin/posts/${uuid}`,  post.value)
    }
+   const destroyPost = async (uuid)=>{
+      await axios.delete(`/api/admin/posts/${uuid}`)
+   }
 
-   return {posts, fetchPosts , createPost , post, fetchPost , patchPost }
+   return {posts, fetchPosts , createPost , post, fetchPost , patchPost , destroyPost}
 }

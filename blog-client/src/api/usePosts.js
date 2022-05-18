@@ -8,12 +8,10 @@ export default function usePosts (){
        let response = await axios.get('/api/posts');
        posts.value = response.data.data; 
    }
-   const fetchPost = async (slug)=>{
-       let response = await axios.get(`/api/posts/${slug}`);
+   const fetchPost = async (uuid)=>{
+       let response = await axios.get(`/api/posts/${uuid}`);
        post.value = response.data.data; 
    }
-
-
 
    return {posts, fetchPosts, post, fetchPost}
 }

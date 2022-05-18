@@ -15,14 +15,14 @@
       </div>
       <div class="flex items-center space-x-6">
         <div>
-          <span class="text-sm text-gray-900">Autosaved</span>
+          <span class="text-sm text-gray-900">{{lastSaved.fromNow()}}</span>
         </div>
         <div>
           <button v-on:click="post.published = !post.published" class="text-sm font-medium" v-bind:class="{'text-green-500': post.published }">
           {{post.published ? 'Published' : 'Unpublished'}}</button>
         </div>
         <router-link
-          :to="{ name: 'post', params: { slug: post.uuid } }"
+          :to="{ name: 'post', params: { slug: post.slug } }"
           class="text-sm font-medium text-gray-800"
         >
           Preview
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <ResizeTextarea v-if="post.title" >
+    <ResizeTextarea  >
       <template v-slot:default="{ resize, el }">
         <textarea
           :ref="el"
@@ -42,27 +42,32 @@
       </template>
     </ResizeTextarea>
     <Editor v-model:modelValue="post.body" v-model:teaserValue="post.teaser" class="mt-16"/>
-    {{ post }}
   </div>
 </template>
 
 <script>
-import { onMounted, watch , watchEffect} from "vue";
+import { onMounted, watch , watchEffect, ref} from "vue";
 import _ from "lodash";
 import useAdminPosts from "../../api/useAdminPosts";
 import ResizeTextarea from "../../components/ResizeTextarea.vue";
 import slugify from 'slugify'
 import Editor from '../../components/Editor.vue'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime);
 export default {
   props: {
     uuid: String,
   },
   setup(props) {
     const { post, fetchPost, patchPost } = useAdminPosts();
+    const lastSaved =ref(dayjs())
     const updatePost = async () => {
       if(post.value.title){
         await patchPost(props.uuid);
       }
+
+      lastSaved.value = dayjs()
       
     };
     const replaceSlug = ()=>{
@@ -88,7 +93,7 @@ export default {
         }, 500)
       );
     });
-    return { post, fetchPost, patchPost };
+    return { post, lastSaved };
   },
   components: { ResizeTextarea, Editor },
 };
