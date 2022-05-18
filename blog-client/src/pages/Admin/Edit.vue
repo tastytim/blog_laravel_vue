@@ -1,13 +1,16 @@
 <template>
   <div v-if="post.uuid">
+
+  <div>Slug :</div>
     <div
-      class="absolute w-full left-0 top-0 p-6 flex justify-between items-center space-x-6 bg-gray-500"
+      class=" w-full flex justify-between items-center  "
     >
-      <div class="flex-grow items-center flex">
+    
+      <div class="flex-grow items-center flex bg-gray-100">
         <span class="mr-1">/</span
         ><input
           type="text"
-          class="p-0 border-none focus:ring-0 w-full"
+          class="p-0 border-none focus:ring-0 w-full bg-gray-100"
           v-model="post.slug"
           spellcheck="false"
           v-on:click="$event.target.select()"
@@ -29,7 +32,7 @@
         </router-link>
       </div>
     </div>
-
+    <div>Title :</div>
     <ResizeTextarea  >
       <template v-slot:default="{ resize, el }">
         <textarea
@@ -37,11 +40,12 @@
           v-on:input="resize"
           rows="1"
           v-model="post.title"
-          class="my-6 bg-red-300 w-full text-4xl lg:text-6xl leading-10 font-extrabold tracking-tight text-gray-900 text-center border-none focus:ring-0 resize-none p-0"
+          class="  w-full bg-gray-200 text-4xl lg:text-6xl leading-10 font-extrabold tracking-tight text-gray-900 text-center border-none focus:ring-0 resize-none p-0"
         ></textarea>
       </template>
     </ResizeTextarea>
-    <Editor v-model:modelValue="post.body" v-model:teaserValue="post.teaser" class="mt-16"/>
+    <div>Text :</div>
+    <Editor v-model:modelValue="post.body" v-model:teaserValue="post.teaser" />
   </div>
 </template>
 

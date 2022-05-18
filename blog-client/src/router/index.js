@@ -47,11 +47,11 @@ const routes = [
             return next()
         }
     },
-    {
-        path:'/admin/register',
-        name: 'admin.register',
-        component: Register
-    }
+    // {
+    //     path:'/admin/register',
+    //     name: 'admin.register',
+    //     component: Register
+    // }
 
 ]
 

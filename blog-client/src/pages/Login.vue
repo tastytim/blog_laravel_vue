@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="max-w-md mx-auto w-full">
-       {{errors}}
       <form class="mt-8 space-y-6" v-on:submit.prevent="attemptLogin">
         <div class="rounded-md shadow-sm space-y-4">
           <div>

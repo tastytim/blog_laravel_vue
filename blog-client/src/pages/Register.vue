@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div class="max-w-md mx-auto w-full">
       {{ errors }}
@@ -107,4 +107,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style></style> -->

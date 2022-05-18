@@ -46,5 +46,10 @@ export default createStore({
 
       await dispatch('authenticate');
     },
+    async logout({ dispatch }, credentials) {
+      await axios.post("/logout", credentials);
+      await axios.get("/sanctum/csrf-cookie");
+      await dispatch('authenticate');
+    },
   },
 });

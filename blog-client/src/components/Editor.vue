@@ -24,7 +24,7 @@ export default {
       extensions: [StarterKit],
       editorProps: {
         attributes: {
-          class: "bg-gray-300 min-w-full w-full focus:outline-none prose mt-16 text-gray-500 prose-sm lg:prose ",
+          class: "bg-gray-100 min-w-full w-full focus:outline-none prose  text-gray-500 prose-sm lg:prose rounded",
         },
       },
       onUpdate:(context)=>{
