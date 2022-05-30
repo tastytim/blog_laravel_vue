@@ -74,8 +74,6 @@ export default {
           if(e.response.status == 422){
               errors.value = e
           }
-        
-          
       });
     };
 
