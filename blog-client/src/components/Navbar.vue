@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="flex p-4">
-    <router-link class="mr-2" :to="{ name: 'home' }">Home</router-link>
+    <router-link class="mr-2 text-xl extrabold" :to="{ name: 'home' }"><img src="./../assets/logo.jpg" alt="" class="w-20"></router-link>
     <div class="flex" v-if="name.user" >
       <router-link class="mr-2" :to="{ name: 'admin.posts' }"
         >Dashboard</router-link
@@ -14,7 +14,7 @@
 
     <!-- <router-link class="mr-2" :to="{ name: 'admin.register' }">Register</router-link> -->
   </div>
-  <div class="text-3xl font-extrabold justify-center flex">
+  <div class="text-2xl font-extrabold justify-center flex">
       <div>PAVLENKO TIMUR BLOG</div>
 
   </div>

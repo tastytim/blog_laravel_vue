@@ -1,6 +1,6 @@
 
 <template>
-<div>
+<div class="container mx-auto px-12">
   <Navbar/>
   <div class="container mx-auto py-12">
     
