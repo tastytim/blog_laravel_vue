@@ -4,6 +4,8 @@
 
 <script>
 import { useEditor, EditorContent } from "@tiptap/vue-3";
+import TextStyle from '@tiptap/extension-text-style'
+import { Color } from '@tiptap/extension-color'
 import StarterKit from "@tiptap/starter-kit";
 import {watch } from 'vue'
 export default {
@@ -21,7 +23,11 @@ export default {
   setup(props, {emit}) {
     const editor = useEditor({
       content: props.modelValue,
-      extensions: [StarterKit],
+      TextStyle,
+      extensions: [StarterKit, Color.configure({
+  types: ['textStyle'],
+})],
+      
       editorProps: {
         attributes: {
           class: "bg-gray-100 min-w-full w-full focus:outline-none prose  text-gray-500 prose-sm lg:prose rounded",
