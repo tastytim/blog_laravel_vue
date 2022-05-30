@@ -21,8 +21,8 @@
           <span class="text-sm text-gray-900">{{lastSaved.fromNow()}}</span>
         </div>
         <div>
-          <button v-on:click="post.published = !post.published" class="text-sm font-medium" v-bind:class="{ 'bg-green-100 text-green-800' : post.published , 'bg-red-100 text-red-800' : !post.published  }">
-          {{post.published ? 'Published' : 'Unpublished'}}</button>
+          <button v-on:click="post.published == 1 ? post.published = 0 : post.published = 1" class="text-sm font-medium" v-bind:class="{ 'bg-green-100 text-green-800' : post.published == 1, 'bg-red-100 text-red-800' : post.published == 0 }">
+          {{post.published == 1 ? 'Published' : 'Unpublished'}}</button>
         </div>
         <router-link
           :to="{ name: 'post', params: { slug: post.slug } }"

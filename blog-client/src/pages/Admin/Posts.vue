@@ -16,8 +16,8 @@
             <div class="flex items-center space-x-6">
                 <p class="text-base text-gray-500">
                     <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium"
-                     :class="{ 'bg-green-100 text-green-800' : post.published , 'bg-red-100 text-red-800' : !post.published  }">
-                        {{post.published ? 'Published' : 'Unpublished'}}
+                     :class="{ 'bg-green-100 text-green-800' : post.published == 1 , 'bg-red-100 text-red-800' : post.published == 0  }">
+                        {{post.published = 1 ? 'Published' : 'Unpublished'}}
                     </span>
 
                     
