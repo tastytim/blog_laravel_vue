@@ -13,7 +13,6 @@
       <v-pagination
         v-model="page"
         :pages="pages"
-        :range-size="3"
         active-color="#DCEDFF"
         @update:modelValue="updateHandler"
       />
@@ -36,17 +35,17 @@ export default {
     onMounted(fetchPosts);
     let page = ref(1);
     let start = ref(0);
-    let end = ref(10);
+    let end = ref(5);
     return { posts, inputText, page, start, end };
   },
   computed: {
     filteredList() {
-      return [...this.posts].splice(this.start, this.end).filter((e) => {
+      return [...this.posts].slice(this.start, this.end).filter((e) => {
         return e.title.toLowerCase().includes(this.inputText.toLowerCase());
       });
     },
     pages() {
-      return Math.floor(this.posts.length / 5);
+      return Math.ceil(this.posts.length / 5);
     },
   },
   methods: {
@@ -55,8 +54,8 @@ export default {
     },
     updateHandler(e) {
       this.page = e;
-      this.start = this.page * 10 - 10;
-      this.end = this.page * 10;
+      this.start = this.page * 5 - 5;
+      this.end = this.page * 5;
     },
   },
 };

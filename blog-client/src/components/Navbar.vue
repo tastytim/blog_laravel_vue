@@ -15,7 +15,7 @@
     <!-- <router-link class="mr-2" :to="{ name: 'admin.register' }">Register</router-link> -->
   </div>
   <div class="text-2xl font-extrabold justify-center flex">
-      <div>PAVLENKO TIMUR BLOG</div>
+      <div>PAVLENKO TIMUR DEV</div>
 
   </div>
   
